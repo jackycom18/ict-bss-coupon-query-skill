@@ -1,0 +1,66 @@
+{
+  "skill_name": "huawei-cloud-bss-coupon-query",
+  "region": "cn-north-1",
+  "test_cases": [
+    {
+      "id": "TC-01",
+      "name": "BSS CLI read-only smoke test",
+      "command": "hcloud BSS ListSubCustomerCoupons --cli-region=cn-north-1 --limit=1",
+      "expected": "JSON response with count and user_coupons",
+      "type": "readonly",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-02",
+      "name": "List normalized coupons",
+      "command": "python3 scripts/query_coupons.py list --limit 5",
+      "expected": "Masked coupon rows and total count",
+      "type": "readonly",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-03",
+      "name": "Available coupon status filter",
+      "command": "python3 scripts/query_coupons.py list --status available --limit 5",
+      "expected": "Only available coupons",
+      "type": "readonly",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-04",
+      "name": "Expiring coupon warning",
+      "command": "python3 scripts/query_coupons.py expiring --days 30",
+      "expected": "Available coupons expiring within 30 days",
+      "type": "readonly",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-05",
+      "name": "Usage analysis",
+      "command": "python3 scripts/query_coupons.py analyze",
+      "expected": "Coupon totals, status counts, and utilization",
+      "type": "readonly",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-06",
+      "name": "Reject invalid display limit",
+      "command": "python3 scripts/query_coupons.py list --limit 101",
+      "expected": "Exit code 2 with a validation error",
+      "type": "negative",
+      "executor": "cli"
+    },
+    {
+      "id": "TC-07",
+      "name": "Own script help smoke test",
+      "command": "bash scripts/test-cli-commands.sh --help",
+      "expected": "Usage output and exit code 0",
+      "type": "syntax",
+      "executor": "cli"
+    }
+  ],
+  "env_vars_required": [
+    "Existing protected KooCLI profile or HUAWEI/HW/HWC AK/SK environment variables"
+  ],
+  "notes": "All enabled cases are read-only. The negative case expects exit code 2."
+}

@@ -1,0 +1,25 @@
+========================================================================
+  Skill Gate Audit Report
+  Scan target: C:\Users\Xzj13\Desktop\pro\bss-coupon-query-skill\skills\devtools\common\huawei-cloud-bss-coupon-query
+  Skills scanned: 1
+  Scan level: high
+  Generated: 2026-10-27 11:09:36 UTC
+========================================================================
+
+── 1. Scanned Skills ──
+
+  ✔ huawei-cloud-bss-coupon-query
+
+── 2. Issue Summary ──
+
+  (no issues found)
+
+── 3. Issue Details ──
+
+── 4. Fix Strategies ──
+
+  (no issues to fix)
+
+========================================================================
+  Gate Verdict: PASS  |  gitleaks OK  runtime_security OK  skillspector OK
+========================================================================

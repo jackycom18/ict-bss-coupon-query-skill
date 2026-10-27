@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.test-bin/
+.run-*.tmp.sh
+*.tmp
+skills/devtools/common/*-test-files/
